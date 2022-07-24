@@ -17,8 +17,6 @@ my @contents = <InFile>;
 
 my $befunge = new Befunge( \@contents, [ 80, 25 ] );
 
-# $befunge->run;
-
-print $befunge->to_s;
+$befunge->run;
 
 close InFile;
