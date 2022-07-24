@@ -12,11 +12,11 @@ use InstrPtr;
 
 sub new ( $class, $code, $size = [ 80, 25 ] ) {
 
-    my @cary = ( @$code, (" ") x ( 25 - scalar @$code ) );
+    my @cary = map { @$code[$_] or "" } 0 .. $size->[1] - 1;
 
     for my $str (@cary) {
         chomp $str;
-        $str = Utils::ljust( $str, 80 );
+        $str = substr Utils::ljust( $str, $size->[0] ), 0, $size->[0];
     }
 
     my $self = {

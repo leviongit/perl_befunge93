@@ -24,11 +24,17 @@ sub clamp_wrap ( $num, $min, $max ) {
 }
 
 sub ljust ( $str, $len, $char = ' ' ) {
-    $str . ( $char x ( $len - ( length $str ) - 1 ) );
+    if ( length $str < $len ) {
+        $str . ( $char x ( $len - ( length $str ) - 1 ) );
+    }
+    else { $str; }
 }
 
 sub rjust ( $str, $len, $char = ' ' ) {
-    ( $char x ( $len - ( length $str ) - 1 ) ) . $str;
+    if ( length $str < $len ) {
+        ( $char x ( $len - ( length $str ) - 1 ) ) . $str;
+    }
+    else { $str; }
 }
 
 sub popn ( $ary, $num, $default = 0 ) {
